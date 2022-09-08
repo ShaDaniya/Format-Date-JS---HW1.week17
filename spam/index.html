@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Comments
+    </h1>
+    <div id="container">
+
+    </div>
+    <div>
+        <label for="comment">Комментарий</label>
+        <textarea name="comment" id="newComment" required placeholder="Что думаете?"></textarea>
+    </div>
+    <button onclick="addComment();">Добавить комментарий</button>
+    <script>
+        const comments = [];
+        const comment = document.getElementById('newComment').value;
+
+        function addComment() {
+            const comment = document.getElementById('newComment').value;
+            console.log(comment);
+            const result = comment.replace(/viagra|xxx/ig, '***');
+            console.log(result);
+
+
+
+            comments.push(result);
+            generateComment();
+            document.getElementById('newComment').value = '';
+            console.log(comments);
+
+        }
+
+        function generateComment() {
+            let optionsString = '';
+            for (let comment of comments) {
+                optionsString +=
+                    `<div>
+        <p>${comment}</p><button>Удалить</button>
+    </div>`;
+            }
+
+            document.getElementById('container').innerHTML = optionsString;
+
+        }
+
+        const str = comment;
+        const result = str.replace("viagra", "***");
+        console.log(result);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            generateComment();
+        });
+    </script>
+</body>
+
+</html>
