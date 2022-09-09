@@ -6,19 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container {
+            /* width: 50vw; */
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .p__comment {
+            width: 300px;
+            border: 1px dashed black;
+            background-color: rgb(228, 241, 246);
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Comments
-    </h1>
-    <div id="container">
+    <div class="container">
+        <h1>Comments
+        </h1>
+        <div id="container">
 
-    </div>
-    <div>
+        </div>
         <label for="comment">Комментарий</label>
         <textarea name="comment" id="newComment" required placeholder="Что думаете?"></textarea>
+        <button onclick="addComment();">Добавить комментарий</button>
     </div>
-    <button onclick="addComment();">Добавить комментарий</button>
     <script>
         const comments = [];
         const comment = document.getElementById('newComment').value;
@@ -43,12 +58,17 @@
             for (let comment of comments) {
                 optionsString +=
                     `<div>
-        <p>${comment}</p><button>Удалить</button>
+        <p class="p__comment" id="markComment">${comment}</p><button onclick="markComment('red');">Удалить</button>
     </div>`;
             }
 
             document.getElementById('container').innerHTML = optionsString;
 
+        }
+
+        //как удалить коммент по кнопке я не нашла, по кнопке он становится красным 
+        function markComment(color) {
+            document.getElementById("markComment").style.background = color;
         }
 
         const str = comment;
