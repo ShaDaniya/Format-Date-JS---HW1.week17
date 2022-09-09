@@ -16,7 +16,7 @@
         }
 
         .p__comment {
-            width: 300px;
+            width: 500px;
             border: 1px dashed black;
             background-color: rgb(228, 241, 246);
         }
@@ -34,51 +34,7 @@
         <textarea name="comment" id="newComment" required placeholder="Что думаете?"></textarea>
         <button onclick="addComment();">Добавить комментарий</button>
     </div>
-    <script>
-        const comments = [];
-        const comment = document.getElementById('newComment').value;
-
-        function addComment() {
-            const comment = document.getElementById('newComment').value;
-            console.log(comment);
-            const result = comment.replace(/viagra|xxx/ig, '***');
-            console.log(result);
-
-
-
-            comments.push(result);
-            generateComment();
-            document.getElementById('newComment').value = '';
-            console.log(comments);
-
-        }
-
-        function generateComment() {
-            let optionsString = '';
-            for (let comment of comments) {
-                optionsString +=
-                    `<div>
-        <p class="p__comment" id="markComment">${comment}</p><button onclick="markComment('red');">Удалить</button>
-    </div>`;
-            }
-
-            document.getElementById('container').innerHTML = optionsString;
-
-        }
-
-        //как удалить коммент по кнопке я не нашла, по кнопке он становится красным 
-        function markComment(color) {
-            document.getElementById("markComment").style.background = color;
-        }
-
-        const str = comment;
-        const result = str.replace("viagra", "***");
-        console.log(result);
-
-        document.addEventListener("DOMContentLoaded", function () {
-            generateComment();
-        });
-    </script>
+    <script src="index.js"></script>
 </body>
 
 </html>
